@@ -17,6 +17,10 @@ export default class App extends React.Component{
     }
   }
 
+  async question1(){
+    
+  }
+
   componentDidMount(){
     // Where was Margaery Tyrell born?
     axios.get(`http://anapioficeandfire.com/api/characters/16`)
