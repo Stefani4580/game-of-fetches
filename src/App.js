@@ -13,7 +13,7 @@ export default class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      data: []  
+      data: new Map()  
     }
   }
 
@@ -23,6 +23,7 @@ export default class App extends React.Component{
     const response = await axios.get(`http://anapioficeandfire.com/api/characters/16`);
     const answer1 = response.data.born;
     console.log(`1. Where was Margaery Tyrell born? ${answer1}`);
+
     const answer1Array = [answer1];
     this.setState({
       data : answer1Array
@@ -122,9 +123,9 @@ export default class App extends React.Component{
     let title3Req = axios.get("https://www.anapioficeandfire.com/api/books/3");
     axios.all([title1Req, title2Req, title3Req])
     .then(axios.spread((...responses) => {
-      console.log(`7a. What's the name of the founder of House Stark? ${responses[0].data.name}`);
-      console.log(`7b. What's the name of the founder of House Stark? ${responses[1].data.name}`);
-      console.log(`7c. What's the name of the founder of House Stark? ${responses[2].data.name}`);
+      console.log(`7a. What are the titles of Catelyn Stark's three POV books? ${responses[0].data.name}`);
+      console.log(`7b. What are the titles of Catelyn Stark's three POV books?${responses[1].data.name}`);
+      console.log(`7c. What are the titles of Catelyn Stark's three POV books? ${responses[2].data.name}`);
      
       this.setState({
         data : this.state.data.concat(responses[0].data.name)
